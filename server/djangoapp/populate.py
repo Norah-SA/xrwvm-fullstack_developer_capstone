@@ -2,12 +2,15 @@ from .models import CarMake, CarModel
 
 def initiate():
     car_make_data = [
-        {"name":"Land Rover", "description":"Great cars. British  technology"},
+        
         {"name":"NISSAN", "description":"Great cars. Japanese technology"},
         {"name":"Mercedes", "description":"Great cars. German technology"},
         {"name":"Audi", "description":"Great cars. German technology"},
         {"name":"Kia", "description":"Great cars. Korean technology"},
         {"name":"Toyota", "description":"Great cars. Japanese technology"},
+        {"name":"Land Rover", "description":"Great cars. British  technology"},
+        {"name":"Fiat", "description":"Great cars. Italian  technology"},
+        {"name":"Ford", "description":"Great cars. American technology"},
     ]
 
     car_make_instances = []
@@ -32,8 +35,9 @@ def initiate():
       {"name":"Corolla", "type":"Sedan", "year": 2023, "car_make":car_make_instances[4]},
       {"name":"Camry", "type":"Sedan", "year": 2023, "car_make":car_make_instances[4]},
       {"name":"Kluger", "type":"SUV", "year": 2023, "car_make":car_make_instances[4]},
-      {"name":"defender 110", "type":"SUV", "year": 2024, "car_make":car_make_instances[2]},
-      {"name":"Range Rover", "type":"Sport", "year": 2024, "car_make":car_make_instances[1]},
+      {"name":"defender 110", "type":"SUV", "year": 2024, "car_make":car_make_instances[5]},
+      {"name":"Range Rover", "type":"Sport", "year": 2024, "car_make":car_make_instances[5]},
+      {"name":"FIAT 500", "type":"Sport", "year": 2024, "car_make":car_make_instances[6]}
         # Add more CarModel instances as needed
     ]
 

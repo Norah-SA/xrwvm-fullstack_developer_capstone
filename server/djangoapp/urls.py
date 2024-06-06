@@ -19,6 +19,6 @@ urlpatterns = [
     # path for add a review view
 
     #path for get car
-        path(route='get_cars', view=views.get_cars, name ='getcars'),
+    path(route='get_cars', view=views.get_cars, name ='getcars'),
 
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
