@@ -47,7 +47,7 @@ class CarModel(models.Model):
         ('WAGON', 'Wagon'),
         ('SPORT', 'Sport'),
         ('PICKUP', 'Pickup'),
-        ('CONVERTIBLE', 'Convertible'),
+        
         # Add more choices as required
     ]
     type = models.CharField(max_length=10, choices=CAR_TYPES, default='SUV')
