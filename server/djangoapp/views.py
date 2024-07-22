@@ -69,41 +69,29 @@ def logout_request(request):
 
 @csrf_exempt
 def registration(request):
-    # was fixed uncommand if need to be used
-    # context = {}
-
     data = json.loads(request.body)
-    username = data['userName']
-    password = data['password']
-    first_name = data['firstName']
-    last_name = data['lastName']
-    email = data['email']
-    username_exist = False
-    # was fixed uncommand if need to be used
-    # email_exist = False
-    try:
-        # Check if user already exists
-        User.objects.get(username=username)
-        username_exist = True
-    except RequestException as e:
-        # If not, simply log this is a new user
-        logger.debug("{} is new user".format(username))
-        logger.debug("{} ".format(e))
+    username = data["userName"]
+    password = data["password"]
+    first_name = data["firstName"]
+    last_name = data["lastName"]
+    email = data["email"]
+    # Check if a user with the provided username already exists
+    if User.objects.filter(username=username).exists():
+        return JsonResponse({"status": "User already exists"})
 
-    # If it is a new user
-    if not username_exist:
-        # Create user in auth_user table
-        user = User.objects.create_user(username=username,
-                                        first_name=first_name,
-                                        last_name=last_name,
-                                        password=password, email=email)
-        # Login the user and redirect to list page
-        login(request, user)
-        data = {"userName": username, "status": "Authenticated"}
-        return JsonResponse(data)
-    else:
-        data = {"userName": username, "error": "Already Registered"}
-        return JsonResponse(data)
+    # Create a new user with the provided username and password
+    user = User.objects.create_user(
+        username=username,
+        first_name=first_name,
+        last_name=last_name,
+        password=password,
+        email=email,
+    )
+
+    # Login the user
+    login(request, user)
+    data = {"userName": username, "status": "Authenticated"}
+    return JsonResponse(data)
 
 
 # # Update the `get_dealerships` view to render the index page with
