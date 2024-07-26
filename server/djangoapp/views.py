@@ -17,7 +17,7 @@ from .populate import initiate
 
 from .models import CarMake, CarModel
 
-from .restapis import get_request, analyze_review_sentiments
+from .restapis import get_request, analyze_review_sentiments, post_review
 # Get an instance of a logger
 logger = logging.getLogger(__name__)
 
@@ -147,10 +147,10 @@ def get_dealer_details(request, dealer_id):
 def add_review(request):
     if (request.user.is_anonymous is False):
         # was fixed uncommand if need to be used
-        # data = json.loads(request.body)
+        data = json.loads(request.body)
         try:
             # was fixed uncommand if need to be used
-            # response = post_review(data)
+            response = post_review(data)
             return JsonResponse({"status": 200})
         except RequestException as e:
             return JsonResponse({"status": 401,
